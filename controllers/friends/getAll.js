@@ -1,10 +1,10 @@
-const { Friends } = require('../../models/friends');
+const { Friends } = require("../../models/friends");
 
 const getAll = async (req, res) => {
   const friends = await Friends.find({});
 
   res.json({
-    message: 'success',
+    message: "success",
     data: { result: friends },
   });
 };
