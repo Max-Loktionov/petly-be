@@ -32,9 +32,9 @@
 
 some action with data:
 
-| route | method mongoose |
-| ----- | :-------------: |
-| /news |        {        |
+| route | schema |
+| ----- | :----: |
+| /news |   {    |
 
     "message": "success",
     "data": {
@@ -47,7 +47,8 @@ some action with data:
                 "link": "https://www.kmlvm.com.ua/oberezhno-klishhi-yak-uberegty-ulyublentsya-vid-nepryyemnostej/"
             },  }     |
 
-| /friends | {[
+| /friends | {[|
+
 {
 "name": "Барбос",
 "time": {
@@ -66,7 +67,8 @@ some action with data:
 "link": "https://www.facebook.com/NGO.Barbos"
 }} |
 
-| /user | {[
+| /user | {[ |
+
 {
 "name": "Ann",
 "email": "barbos@gmail.com",
@@ -77,7 +79,8 @@ some action with data:
 "avatar": "https://s.0312.ua/section/newsInText/upload/images/news/intext/000/050/183/barbos-logo_5c078b136ea2f.jpg"
 }]} |
 
-|pets|{[
+|pets|{[|
+
 {
 "name": "Jack",
 "birthday": "22.11.2222",
