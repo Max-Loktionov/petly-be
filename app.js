@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use("/news", newsRouter);
+app.use("/news", newsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
