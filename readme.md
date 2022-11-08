@@ -47,9 +47,7 @@ some action with data:
              "link": "https://www.kmlvm.com.ua/oberezhno-klishhi-yak-uberegty-ulyublentsya-vid-nepryyemnostej/"
          },  }    ``` |
 
-| /friends |
-
-````
+| /friends | ```
 
 [{
 "name": "Барбос",
@@ -69,7 +67,7 @@ some action with data:
 "link": "https://www.facebook.com/NGO.Barbos"
 }}]
 
-````|
+``` |
 
 | /user | ```
 {[
