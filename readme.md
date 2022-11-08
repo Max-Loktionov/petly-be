@@ -65,6 +65,7 @@ some action with data:
 "logo": "https://s.0312.ua/section/newsInText/upload/images/news/intext/000/050/1113/barbos-logo_5c0711b136ea2f.jpg",
 "link": "https://www.facebook.com/NGO.Barbos"
 }} |
+
 | /user | {[
 {
 "name": "Ann",
@@ -75,6 +76,7 @@ some action with data:
 "phone": "+380671234567",
 "avatar": "https://s.0312.ua/section/newsInText/upload/images/news/intext/000/050/183/barbos-logo_5c078b136ea2f.jpg"
 }]} |
+
 |pets|{[
 {
 "name": "Jack",
