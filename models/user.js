@@ -16,7 +16,7 @@ const userSchema = new Schema(
     name: {
       type: String,
       required: [true, "Name is required"],
-      default: "starter",
+      default: "NewUser",
     },
     token: {
       type: String,
@@ -24,7 +24,6 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      // required: true,
     },
     birthday: {
       type: String,
@@ -50,6 +49,7 @@ const registerJoiSchema = Joi.object({
   name: Joi.string().required(),
   city: Joi.string(),
   phone: Joi.string(),
+  birthday: Joi.string(),
   token: Joi.string(),
 });
 
