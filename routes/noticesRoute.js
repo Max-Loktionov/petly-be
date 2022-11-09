@@ -1,11 +1,11 @@
 const express = require("express");
 
-const { news: ctrl } = require("../controllers");
+const { getNoticesCTRL } = require("../controllers/notices");
 
 const { asyncWrapper } = require("../helpers");
 
 const router = express.Router();
 
-router.get("/", asyncWrapper(ctrl.getAll));
+router.get("/", asyncWrapper(getNoticesCTRL));
 
 module.exports = router;
