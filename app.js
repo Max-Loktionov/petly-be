@@ -19,7 +19,6 @@ app.use(express.static("public"));
 
 app.use("/news", newsRouter);
 app.use("/friends", friendsRouter);
-app.use("/news", newsRouter);
 app.use("/auth", authRouter);
 
 app.use((req, res) => {
