@@ -1,7 +1,7 @@
-const assyncWrapper = require("./assyncWrapper");
+const asyncWrapper = require("./asyncWrapper");
 const requestError = require("./requestError");
 
 module.exports = {
-  assyncWrapper,
+  asyncWrapper,
   requestError,
 };
