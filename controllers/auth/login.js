@@ -7,6 +7,7 @@ const createError = require("http-errors");
 
 const login = async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body);
   const user = await User.findOne({ email });
   if (!user) {
     throw createError(401, "Email or password is wrong");
@@ -26,7 +27,7 @@ const login = async (req, res) => {
   res.json({
     message: "success",
     token,
-    data: { result: user },
+    data: { result: { _id: user._id } },
   });
 };
 module.exports = login;

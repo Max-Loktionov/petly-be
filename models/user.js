@@ -24,11 +24,11 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      required: true,
+      // required: true,
     },
     birthday: {
       type: String,
-      default: "00a0000",
+      default: "00.00.00",
     },
     city: {
       type: String,
@@ -48,8 +48,8 @@ const registerJoiSchema = Joi.object({
   password: Joi.string().required(),
   email: Joi.string().email().required(),
   name: Joi.string().required(),
-  city: Joi.string().required(),
-  phone: Joi.string().required(),
+  city: Joi.string(),
+  phone: Joi.string(),
   token: Joi.string(),
 });
 
