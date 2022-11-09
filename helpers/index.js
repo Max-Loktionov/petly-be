@@ -1,5 +1,7 @@
-const ctrlWrapper = require("./ctrlWrapper");
+const asyncWrapper = require("./asyncWrapper");
+const requestError = require("./requestError");
 
 module.exports = {
-  ctrlWrapper,
+  asyncWrapper,
+  requestError,
 };
