@@ -1,7 +1,5 @@
 const express = require("express");
-
 const { getNoticesCTRL } = require("../controllers/notices");
-
 const { asyncWrapper } = require("../helpers");
 
 const router = express.Router();

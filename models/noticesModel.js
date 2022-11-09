@@ -23,12 +23,11 @@ const newsSchema = Schema(
       required: true,
     },
     owner: { type: Schema.Types.ObjectId, ref: "user" },
+    default: null,
   },
   { versionKey: false }
 );
 
-const Notices = model("friends", newsSchema);
+const Notices = model("pet", newsSchema);
 
-module.exports = {
-  Notices,
-};
+module.exports = Notices;
