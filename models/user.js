@@ -28,7 +28,7 @@ const userSchema = new Schema(
     },
     birthday: {
       type: String,
-      default: "00.00.0000",
+      default: "00a0000",
     },
     city: {
       type: String,

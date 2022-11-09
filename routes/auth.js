@@ -6,7 +6,7 @@ const {
   // validation,
   authenticate,
   //  upload
-} = require("../../middleware");
+} = require("../middleware/");
 
 const { asyncWrapper } = require("../helpers");
 

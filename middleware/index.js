@@ -5,9 +5,9 @@
 const authenticate = require("./authenticate");
 
 module.exports = {
-//   validation,
-//   ctrlWrapper,
-//   isValidId,
+  //   validation,
+  //   ctrlWrapper,
+  //   isValidId,
   authenticate,
-//   upload,
+  //   upload,
 };
