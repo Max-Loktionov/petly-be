@@ -20,14 +20,13 @@ const newsSchema = Schema(
     },
     avatar: {
       type: String,
-      required: true,
     },
     owner: { type: Schema.Types.ObjectId, ref: "user" },
-    default: null,
+    default: false,
   },
   { versionKey: false }
 );
 
-const Notices = model("pet", newsSchema);
+const Notice = model("notice", newsSchema);
 
-module.exports = Notices;
+module.exports = Notice;
