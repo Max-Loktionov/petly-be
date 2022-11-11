@@ -1,9 +1,11 @@
-const getCurrentUser = require("./getCurrentUser");
-// const login = require("./login");
+const getUser = require("./getUser");
+const addPet = require("./addPet");
+const removePetById = require("./removePetById");
 // const getCurrent = require("./getCurrent");
 // const logout = require("./logout");
 
 module.exports = {
-  getCurrentUser,
-  // login, logout, getCurrent
+  getUser,
+  addPet,
+  removePetById,
 };
