@@ -79,8 +79,8 @@ const loginJoiSchema = Joi.object({
   email: Joi.string().email().required(),
 });
 
-const schemas = { registerJoiSchema, loginJoiSchema };
+const schemasUser = { registerJoiSchema, loginJoiSchema };
 
 const User = model("user", userSchema);
 
-module.exports = { User, schemas };
+module.exports = { User, schemasUser };
