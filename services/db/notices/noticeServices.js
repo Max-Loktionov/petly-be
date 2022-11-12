@@ -1,4 +1,4 @@
-const Notice = require("../../../models/noticesModel");
+const { Notice } = require("../../../models/noticesModel");
 
 const getNoticesService = async (skip, limit) => await Notice.find({}, {}, { skip, limit });
 

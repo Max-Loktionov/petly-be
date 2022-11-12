@@ -1,3 +1,4 @@
+const Joi = require("joi");
 const { Schema, model } = require("mongoose");
 
 const newsSchema = Schema(
@@ -46,4 +47,18 @@ const newsSchema = Schema(
 
 const Notice = model("notice", newsSchema);
 
-module.exports = Notice;
+const noticeSchemaValidation = Joi.object({
+  name: Joi.string().lowercase().required().min(3).max(10),
+  title: Joi.string().lowercase().required().min(3).max(10),
+  birthday: Joi.date().required().iso(),
+  breed: Joi.string().lowercase().required(),
+  male: Joi.string()
+    .lowercase()
+    .pattern(/^[female]+$/)
+    .required(),
+  location: Joi.string().lowercase().required(),
+  price: Joi.number(),
+  comments: Joi.string().lowercase().required(),
+});
+
+module.exports = { Notice, noticeSchemaValidation };

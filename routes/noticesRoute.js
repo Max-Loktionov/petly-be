@@ -2,7 +2,7 @@ const express = require("express");
 const { getNoticesCTRL, addNoticeCTRL, getNoticeByIdCTRL, deleteNoticeCTRL } = require("../controllers/notices");
 const { asyncWrapper } = require("../helpers");
 const { validation } = require("../middleware");
-const { noticeSchemaValidation } = require("../middleware/validationSchema/");
+const { noticeSchemaValidation } = require("../models/noticesModel");
 
 const router = express.Router();
 
