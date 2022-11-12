@@ -1,5 +1,5 @@
-const getAll = require("./getAll");
+const getAllFriends = require("./getAllFriends");
 
 module.exports = {
-  getAll,
+  getAllFriends,
 };

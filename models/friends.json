@@ -3,7 +3,7 @@
         "title": "Притулок для бездомних тварин 'Сіріус'",
         "url": "https://dogcat.com.ua",
         "addressUrl": "https://goo.gl/maps/iq8NXEUf31EAQCzc6",
-        "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_287.png",
+        "imageUrl": "/img_our_friend/frame_287.png",
         "address": "Fedorivka, Kyiv Oblast, Ukraine, 07372",
         "workDays": [
             {
@@ -39,7 +39,7 @@
         "title": "Happy Paw",
         "url": "https://happypaw.ua/ua",
         "addressUrl": "https://goo.gl/maps/3RyzTYBvMr9WQWCC6",
-        "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_288.png",
+        "imageUrl": "/img_our_friend/frame_288.png",
         "address": "Київ, вулиця Шота Руставелі, 44 (3-й поверх, офіс 7)",
         "workDays": [
             {
@@ -95,7 +95,7 @@
         "title": "ЛКП “ЛЕВ”",
         "url": "https://lkplev.com/",
         "addressUrl": "https://goo.gl/maps/4xMfxtahHPfXeAYU8",
-        "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_289.png",
+        "imageUrl": "/img_our_friend/frame_289.png",
         "address": "79024, м.Львів, вул. Промислова 56",
         "workDays": null,
         "phone": "+380685354545",
@@ -105,7 +105,7 @@
         "title": "Притулок для собак Велике серце",
         "url": "https://pethelp.com.ua/interv_yu_z_zasnovnitseyu_pritulku_velike_sertse/",
         "addressUrl": null,
-        "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_286.png",
+        "imageUrl": "/img_our_friend/frame_286.png",
         "address": null,
         "workDays": null,
         "phone": null,
@@ -115,7 +115,7 @@
         "title": "Волонтерська організація БАРБОС",
         "url": "https://uk-ua.facebook.com/NGO.Barbos/",
         "addressUrl": "https://goo.gl/maps/pnzYL8t7jbG7j1SQ9",
-        "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_293.png",
+        "imageUrl": "/img_our_friend/frame_293.png",
         "address": "м. Ужгород",
         "workDays": null,
         "phone": "+380664880480",
@@ -125,7 +125,7 @@
         "title": "Ветеринарний центр LicoVet",
         "url": "https://lico.vet/",
         "addressUrl": "https://goo.gl/maps/sub8u9TAAvLJRE9j9",
-        "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_292.png",
+        "imageUrl": "/img_our_friend/frame_292.png",
         "address": "вулиця Другетів, 77, Ужгород, Закарпатська область, 88003",
         "workDays": [
             {
@@ -171,7 +171,7 @@
         "title": "Purina",
         "url": "https://www.purina.ua/",
         "addressUrl": null,
-        "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_290.png",
+        "imageUrl": "/img_our_friend/frame_290.png",
         "address": null,
         "workDays": null,
         "phone": "+380800500950",
@@ -181,7 +181,7 @@
         "title": "Whiskas",
         "url": "https://www.whiskas.ua/",
         "addressUrl": null,
-        "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_285.png",
+        "imageUrl": "/img_our_friend/frame_285.png",
         "address": null,
         "phone": "+380800500155",
         "email": null
@@ -190,7 +190,7 @@
         "title": "Josera",
         "url": "https://josera.ua/",
         "addressUrl": null,
-        "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_291.png",
+        "imageUrl": "/img_our_friend/frame_291.png",
         "address": null,
         "workDays": [
             {

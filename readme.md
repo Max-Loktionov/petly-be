@@ -26,7 +26,15 @@
 - /register
 - /login
 - /news
+
+- if you need pagination News, you have to add two parameters (page={Number}&limit={Number}) (number of page wich could be choosen with amount=limit
+  contacts on each pages), limit=Number [by default (GET news/?page=1&limit=10)]
+
 - /friends
+
+- if you need pagination Friends, you have to add two parameters (page={Number}&limit={Number}) (number of page wich could be choosen with
+  amount=limit contacts on each pages), limit=Number [by default (GET friends/?page=1&limit=10)]
+
 - /notices/:categoryName
 - /user
 
