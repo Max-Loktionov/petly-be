@@ -6,11 +6,11 @@ const newsSchema = Schema(
       type: String,
       required: true,
     },
-    birthday: {
+    title: {
       type: String,
       required: true,
     },
-    comments: {
+    birthday: {
       type: String,
       required: true,
     },
@@ -18,10 +18,27 @@ const newsSchema = Schema(
       type: String,
       required: true,
     },
+    male: {
+      type: String,
+      required: true,
+    },
+    location: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+    },
+    comments: {
+      type: String,
+      required: true,
+    },
     avatar: {
       type: String,
     },
-    owner: { type: Schema.Types.ObjectId, ref: "user" },
+    category: {
+      type: String,
+    },
     default: false,
   },
   { versionKey: false }
