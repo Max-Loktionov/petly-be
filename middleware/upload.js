@@ -2,6 +2,7 @@ const multer = require("multer");
 const path = require("path");
 
 const tempDir = path.join(__dirname, "../", "temp");
+const maxAvatarSize = 9000000;
 
 const multerConfig = multer.diskStorage({
   destination: tempDir,
@@ -10,6 +11,9 @@ const multerConfig = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: multerConfig });
+const upload = multer({
+  storage: multerConfig,
+  limits: { fileSize: maxAvatarSize },
+});
 
 module.exports = upload;
