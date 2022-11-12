@@ -11,7 +11,7 @@ const { users: ctrl } = require("../controllers");
 router.get("/", authenticate, asyncWrapper(ctrl.getUser));
 router.post("/pets", authenticate, validation(schemasPet.addPetSchema), asyncWrapper(ctrl.addPet));
 router.delete("/pets/:petsId", authenticate, isValidId, asyncWrapper(ctrl.removePetById));
-router.patch("/avatar", authenticate, upload.single("avatar"), asyncWrapper(ctrl.updateUseraAvatar));
+router.patch("/avatar", authenticate, upload.single("avatar"), asyncWrapper(ctrl.updateUserAvatar));
 router.patch("/:properties", authenticate, asyncWrapper(ctrl.updateUser));
 
 module.exports = router;

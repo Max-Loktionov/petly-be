@@ -5,12 +5,11 @@ const Jimp = require("jimp");
 
 const { User } = require("../../models/user");
 
-const avatarDir = path.join(__dirname, "../../", "згидшс", "avatars");
+const avatarDir = path.join(__dirname, "../../", "public", "avatars");
 const imgSizePx = 250;
 
 const updateUserAvatar = async (req, res) => {
   try {
-    console.log(req.user);
     const { _id } = req.user;
     const { path: tempUpload, originalname } = req.file;
 
@@ -21,9 +20,10 @@ const updateUserAvatar = async (req, res) => {
 
     const filename = `${_id}.${extention}`;
     const resultUpload = path.join(avatarDir, filename);
+
     await fs.rename(tempUpload, resultUpload);
     const avatar = path.join("avatars", filename);
-    console.log(avatar);
+
     await User.findByIdAndUpdate(_id, { avatar });
     res.json(avatar);
   } catch (error) {
