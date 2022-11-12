@@ -4,7 +4,7 @@ const getUser = async (req, res) => {
   const { name, email, avatar, birthday, city, phone } = req.user;
   const { query } = req.query;
   const { _id: owner } = req.user;
-  const pets = await Pet.find({ owner, ...query }, "-createdAt -updatedAt").populate("owner");
+  const pets = await Pet.find({ owner, ...query }, "-createdAt -updatedAt -owner").populate("owner");
   console.log(owner);
   res.json({
     message: "success",
