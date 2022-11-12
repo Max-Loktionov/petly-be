@@ -32,8 +32,8 @@ petSchema.post("save", handleError);
 const addPetSchema = Joi.object({
   name: Joi.string().required(),
   birthday: Joi.string(),
-  breed: Joi.string(),
-  comments: Joi.string(),
+  breed: Joi.string().min(2).max(16),
+  comments: Joi.string().min(8).max(120),
 });
 
 const schemasPet = { addPetSchema };
