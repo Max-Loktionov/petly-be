@@ -2,6 +2,7 @@ const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 const { handleError } = require("../helpers");
 
+// eslint-disable-next-line no-useless-escape
 const passwordRegex = /^([A-z0-9!@#$%^&*().,<>{}[\]<>?_=+\-|;:\'\"\/])*[^\s]{7,32}$/;
 const passwordMessage = "Passwords no contain space, min length 7 characters, max 32.";
 const phoneRegex = /^((\+)(3)(8)(0))(\(?\d{2}\)?)?\d{3}\d{2}\d{2}$/;
