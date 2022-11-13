@@ -14,9 +14,9 @@ const addNoticeCTRL = async (req, res) => {
 
   const availableCategory = CATHEGORY[isEnableCategory];
 
-  const newNotice = await addNoticeService({ ...data, category: availableCategory });
+  // const newNotice = await addNoticeService({ ...data, category: availableCategory });
 
-  return res.status(201).json({ newNotice });
+  return res.status(201).json({ data });
 };
 
 module.exports = addNoticeCTRL;
