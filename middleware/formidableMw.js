@@ -2,7 +2,7 @@ const formidable = require("formidable");
 const path = require("path");
 const { RequestError, asyncWrapper } = require("../helpers");
 
-const uploadFolder = path.join(__dirname, "../", "tmp");
+const uploadFolder = path.join(__dirname, "../", "temp");
 
 const formDataMW = async (req, res, next) => {
   const contentType = req.get("content-type");
