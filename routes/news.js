@@ -2,10 +2,10 @@ const express = require("express");
 
 const { news: ctrl } = require("../controllers");
 
-const { asyncWrapper } = require("../helpers");
+const { ctrlWrapper } = require("../helpers");
 
 const router = express.Router();
 
-router.get("/", asyncWrapper(ctrl.getAll));
+router.get("/", ctrlWrapper(ctrl.getAllNews));
 
 module.exports = router;
