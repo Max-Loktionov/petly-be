@@ -34,7 +34,13 @@ const formDataMW = async (req, res, next) => {
     req.files = files;
 
     const arrayOfSavedFilesPath = Object.keys(files).map(name => files[name].path);
-    setTimeout(() => arrayOfSavedFilesPath.forEach(path => fs.unlinkSync(path)), process.env.IMAGE_LIVE);
+    setTimeout(() => {
+      arrayOfSavedFilesPath.forEach(path => {
+        try {
+          fs.unlinkSync(path);
+        } catch (error) {}
+      });
+    }, process.env.IMAGE_LIVE);
 
     return next();
   });
