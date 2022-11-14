@@ -6,10 +6,13 @@ const getNoticesByCathegoryService = async (category, skip, limit) => await Noti
 
 const getNoticeByIdService = async id => await Notice.findById(id);
 
-const deleteNoticeByIdService = async id => await Notice.findByIdAndDelete(id);
-
-const addNoticeService = async data => {
-  const newNotice = new Notice({ ...data });
+const deleteNoticeByIdService = async (id, _id) => {
+  const aa = await Notice.findOneAndRemove({ id, owner: _id });
+  console.log(aa);
+  return aa;
+};
+const addNoticeService = async newData => {
+  const newNotice = new Notice({ ...newData });
   const savedNotice = await newNotice.save();
 
   return savedNotice;
