@@ -9,7 +9,7 @@ const updateUser = async (req, res) => {
   switch (properties) {
     case "name":
       result = await User.findOneAndUpdate(
-        _id,
+        { _id },
         { name: req.body.name },
         {
           new: true,
@@ -24,7 +24,7 @@ const updateUser = async (req, res) => {
 
     case "birthday":
       result = await User.findOneAndUpdate(
-        _id,
+        { _id },
         { birthday: req.body.birthday },
         {
           new: true,
@@ -35,7 +35,7 @@ const updateUser = async (req, res) => {
 
     case "city":
       result = await User.findOneAndUpdate(
-        _id,
+        { _id },
         { city: req.body.city },
         {
           new: true,
@@ -46,7 +46,7 @@ const updateUser = async (req, res) => {
 
     case "phone":
       result = await User.findOneAndUpdate(
-        _id,
+        { _id },
         { phone: req.body.phone },
         {
           new: true,
