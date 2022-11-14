@@ -45,9 +45,10 @@ const userSchema = new Schema(
       default: "",
     },
 
-    // notices: {
-    //   type: String,
-    // },
+    notieceId: {
+      type: String,
+      default: [],
+    },
   },
   { versionKey: false, timestamps: true }
 );
