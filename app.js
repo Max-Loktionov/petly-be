@@ -8,6 +8,7 @@ const newsRouter = require("./routes/news");
 const friendsRouter = require("./routes/friends");
 const authRouter = require("./routes/auth");
 const noticesRoute = require("./routes/noticesRoute");
+const formidableMw = require("./middleware/formidableMw");
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
@@ -16,6 +17,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
+app.use(formidableMw);
 
 app.use("/news", newsRouter);
 app.use("/friends", friendsRouter);
