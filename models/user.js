@@ -44,6 +44,10 @@ const userSchema = new Schema(
       match: phoneRegex,
       default: "",
     },
+
+    // notices: {
+    //   type: String,
+    // },
   },
   { versionKey: false, timestamps: true }
 );
