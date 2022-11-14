@@ -9,6 +9,7 @@ const { schemasPet } = require("../models/pets");
 const { users: ctrl } = require("../controllers");
 
 router.get("/", authenticate, asyncWrapper(ctrl.getUser));
+router.get("/notice", authenticate, asyncWrapper(ctrl.getUserNotice));
 router.post("/pets", authenticate, validation(schemasPet.addPetSchema), asyncWrapper(ctrl.addPet));
 router.delete("/pets/:petsId", authenticate, isValidId, asyncWrapper(ctrl.removePetById));
 router.patch("/avatar", authenticate, upload.single("avatar"), asyncWrapper(ctrl.updateUserAvatar));

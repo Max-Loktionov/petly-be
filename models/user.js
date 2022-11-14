@@ -46,8 +46,8 @@ const userSchema = new Schema(
     },
 
     notieceId: {
-      type: String,
-      default: [],
+      type: Schema.Types.Mixed,
+      default: null,
     },
   },
   { versionKey: false, timestamps: true }
