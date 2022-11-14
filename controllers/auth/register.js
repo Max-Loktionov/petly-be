@@ -6,7 +6,7 @@ const createError = require("http-errors");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
-  const { password, email, name, city, phone, birthday } = await req.body;
+  const { password, email, ...rest } = await req.body;
   const user = await User.findOne({ email });
   if (user) {
     throw createError(409, "Email in use");
@@ -16,12 +16,9 @@ const register = async (req, res) => {
   const avatar = gravatar.url(email);
 
   const newUser = await User.create({
-    name,
+    ...rest,
     email,
     password: hashPassword,
-    birthday,
-    city,
-    phone,
     avatar,
   });
 
