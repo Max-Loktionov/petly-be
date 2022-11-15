@@ -49,6 +49,11 @@ const userSchema = new Schema(
       type: Schema.Types.Mixed,
       default: null,
     },
+
+    favoriteNoticeId: {
+      type: Schema.Types.Mixed,
+      default: null,
+    },
   },
   { versionKey: false, timestamps: true }
 );

@@ -16,8 +16,7 @@ const addNoticeCTRL = async (req, res) => {
   const availableCategory = CATHEGORY[isEnableCategory];
   const newData = { ...data, category: availableCategory, owner: _id };
   const newNotice = await addNoticeService(newData);
-  // console.log(newNotice);
-  // const upDateUser = await addNotieceId({ userId: _id, notieceId: newNotice._id });
+
   return res.status(201).json({ newNotice });
 };
 
