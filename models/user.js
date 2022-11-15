@@ -51,7 +51,7 @@ const userSchema = new Schema(
     },
 
     favoriteNoticeId: {
-      type: Schema.Types.Mixed,
+      type: [{ type: Schema.Types.ObjectId }],
       default: null,
     },
   },
