@@ -5,7 +5,14 @@ const removeFavoriteNotice = async (req, res) => {
   const { _id } = req.user;
   const { notice_id } = req.query;
   const newId = new ObjectId(notice_id);
-  const result = await User.findByIdAndUpdate({ _id }, { $pull: { favoriteNoticeId: newId } });
+  const result = await User.findByIdAndUpdate(
+    { _id },
+    { $pull: { favoriteNoticeId: newId } },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
 
   res.json({
     message: "pet deleted",
