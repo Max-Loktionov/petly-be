@@ -46,4 +46,4 @@ const formDataMW = async (req, res, next) => {
   });
 };
 
-module.exports = asyncWrapper(formDataMW);
+module.exports = formDataMW;
