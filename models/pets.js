@@ -10,6 +10,7 @@ const petSchema = new Schema(
     },
     birthday: {
       type: String,
+      default: "00.00.0000",
     },
     breed: {
       type: String,
@@ -17,6 +18,7 @@ const petSchema = new Schema(
     },
     comments: {
       type: String,
+      default: "",
     },
     owner: {
       type: Schema.Types.ObjectId,

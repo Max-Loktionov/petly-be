@@ -40,6 +40,11 @@ const newsSchema = Schema(
     category: {
       type: String,
     },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
     default: false,
   },
   { versionKey: false }

@@ -43,6 +43,16 @@ const userSchema = new Schema(
       match: phoneRegex,
       default: "",
     },
+
+    notieceId: {
+      type: Schema.Types.Mixed,
+      default: null,
+    },
+
+    favoriteNoticeId: {
+      type: [{ type: Schema.Types.ObjectId }],
+      default: null,
+    },
   },
   { versionKey: false, timestamps: true }
 );
