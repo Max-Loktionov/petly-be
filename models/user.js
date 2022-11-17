@@ -21,7 +21,6 @@ const userSchema = new Schema(
     },
     name: {
       type: String,
-      required: [true, "Name is required"],
       default: "NewUser",
     },
     token: {
@@ -74,7 +73,7 @@ const registerJoiSchema = Joi.object({
     "string.empty": `email must contain value`,
     "string.pattern.base": `email must be xxx@xxx.yyy `,
   }),
-  name: Joi.string().required(),
+  name: Joi.string(),
   city: Joi.string(),
   phone: Joi.string().trim().regex(phoneRegex).messages({
     "string.empty": `phone must contain value`,

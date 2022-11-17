@@ -39,6 +39,7 @@ const newsSchema = Schema(
     },
     category: {
       type: String,
+      enum: ["sell", "lost_found", "in_good_hands"],
     },
     owner: {
       type: Schema.Types.ObjectId,
@@ -53,9 +54,9 @@ const newsSchema = Schema(
 const Notice = model("notice", newsSchema);
 
 const noticeSchemaValidation = Joi.object({
-  name: Joi.string().lowercase().required().min(3).max(10),
-  title: Joi.string().lowercase().required().min(3).max(10),
-  birthday: Joi.date().required().iso(),
+  name: Joi.string().lowercase().required().min(2).max(16),
+  title: Joi.string().lowercase().required().min(2).max(48),
+  birthday: Joi.date().required().iso().min(2).max(24),
   breed: Joi.string().lowercase().required(),
   male: Joi.string()
     .lowercase()
@@ -63,7 +64,8 @@ const noticeSchemaValidation = Joi.object({
     .required(),
   location: Joi.string().lowercase().required(),
   price: Joi.number(),
-  comments: Joi.string().lowercase().required(),
+  category: Joi.string().valid("sell", "lost_found", "in_good_hands"),
+  comments: Joi.string().lowercase().required().min(8).max(120),
 });
 
 module.exports = { Notice, noticeSchemaValidation };
