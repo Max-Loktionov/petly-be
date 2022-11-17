@@ -33,6 +33,7 @@ const formDataMW = async (req, res, next) => {
     req.files = files;
 
     const arrayOfSavedFilesPath = Object.keys(files).map(name => files[name].path);
+
     setTimeout(() => {
       arrayOfSavedFilesPath.forEach(path => {
         try {

@@ -11,12 +11,12 @@ const imgSizePx = 250;
 const updateUserAvatar = async (req, res) => {
   try {
     const { _id } = req.user;
-    const { path: tempUpload, originalname } = req.file.avatar;
+    const { filepath: tempUpload, originalFilename } = req.files.avatar;
 
     const jimpAvatar = await Jimp.read(tempUpload);
     await jimpAvatar.resize(imgSizePx, imgSizePx, Jimp.RESIZE_BEZIER).writeAsync(tempUpload);
 
-    const extention = originalname.split(".").pop();
+    const extention = originalFilename.split(".").pop();
 
     const filename = `${_id}.${extention}`;
     const resultUpload = path.join(avatarDir, filename);
@@ -27,7 +27,7 @@ const updateUserAvatar = async (req, res) => {
     await User.findByIdAndUpdate(_id, { avatar });
     res.json(avatar);
   } catch (error) {
-    await fs.unlink(req.file.path);
+    await fs.unlink(req.files.avatar.filepath);
     throw createError(401, "Not authorized");
   }
 };

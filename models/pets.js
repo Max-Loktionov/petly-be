@@ -20,6 +20,10 @@ const petSchema = new Schema(
       type: String,
       default: "",
     },
+    avatar: {
+      type: String,
+      default: "",
+    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: "user",
