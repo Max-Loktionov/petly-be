@@ -2,7 +2,6 @@ const formidable = require("formidable");
 const fs = require("fs");
 const path = require("path");
 const { RequestError, asyncWrapper } = require("../helpers");
-// const fs = require("fs");
 
 const uploadFolder = path.join(__dirname, "../", "temp");
 
@@ -46,4 +45,4 @@ const formDataMW = async (req, res, next) => {
   });
 };
 
-module.exports = formDataMW;
+module.exports = asyncWrapper(formDataMW);

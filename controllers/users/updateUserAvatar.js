@@ -11,7 +11,7 @@ const imgSizePx = 250;
 const updateUserAvatar = async (req, res) => {
   try {
     const { _id } = req.user;
-    const { path: tempUpload, originalname } = req.file;
+    const { path: tempUpload, originalname } = req.file.avatar;
 
     const jimpAvatar = await Jimp.read(tempUpload);
     await jimpAvatar.resize(imgSizePx, imgSizePx, Jimp.RESIZE_BEZIER).writeAsync(tempUpload);
