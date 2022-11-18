@@ -4,8 +4,8 @@
 
 ---
 
-| bcryptjs | cors | cross-env | dotenv | express | gravatar | jimp | joi | jsonwebtoken | mongoose | morgan | multer | @sendgrid/mail |
-| -------- | ---- | --------- | ------ | ------- | -------- | ---- | --- | ------------ | -------- | ------ | ------ | -------------- |
+| bcryptjs | cors | cross-env | dotenv | express | gravatar | jimp | joi | jsonwebtoken | mongoose | morgan | formidable | http-errors |
+| -------- | ---- | --------- | ------ | ------- | -------- | ---- | --- | ------------ | -------- | ------ | ---------- | ----------- |
 
 ---
 
@@ -13,7 +13,8 @@
 
 ---
 
-- 'main' -- it contains last version of app;
+- 'dev' -- it contains last version of app;
+- 'main' -- deploy to heroku
 -
 
 ### API:
@@ -22,10 +23,48 @@
 
 **Use api on routes:**
 
-- /
-- /register
-- /login
-- /news
+--https://petly-be.herokuapp.com
+
+```
+
+POST /auth/signup - реєстрація користувача (потребує  password, email, name - обов'язкові, city, phone, birthday)
+POST /auth/login - логінізація користувача (потребує email, password)
+GET /auth/logout - логаут
+GET /auth/current - віддає данні користувача при вже наявному токені
+
+/======== Данні про юзера ================/
+GET /user - віддає данні про користувача, включно з домашніми улюбленцями, при наявності токену;
+GET /user/notice - віддає оголошення створені користувачем
+PATCH /user/avatar - оновлення аватара юзера, наявність токену);
+PATCH /user/:properties - оновлює одне поле з інформацією про юзера(одне з name, email, birthday, city, phone), окрім аватара, properties - поле яке треба оновити, потребує передачу даних для оновлення
+
+/======== Данні про цуцика юзера =======/
+
+POST /user/pets - додає юзеру домашнього улюбленця, наявніть токену (потребує name - обов'язково, birthday, breed, comments));
+DELETE /user/pets/:petsId - видляє домашнього улюбленця по його id, наявність токену;
+
+/========  Дані по друзях ===============/
+
+ GET /friends  -   всі дані з друзями /доступна пагінація (default {page = 1, limit = 10})
+
+/========  Дані по новинах ===============/
+
+GET  /news -     get - всі дані з новинами /доступна пагінація (default {page = 1, limit = 10})
+
+/====== Робота з оголошеннями=======/
+
+GET /notices - всі оголошення / доступна пагінація (default (page = 1, per_page = 15))/ (обрати за категорією з доступних: ["sell", "lost_found", "in_good_hands"], за допомогою params)
+GET /notices/:id  - детальна інформація по оголошенню(потребує id оголошення)
+POST /notices/:category  -  додавання оголошення (потребує name,title,birthday,breed,male,location,comments - обов'язково, price, avatar, category ), потребує передачу даних за допомогою body/form-data/text (key=name,key=title, ...) body/form-data/file key=avatar
+DELETE /notices/:id - видалення оголошення за його id
+
+/======== Робота з favorite оголошеннями =======|
+GET /user/favorite - віддає улюблені оголошення користувача
+DELETE /user/favorite - видаляє оголошення з улюблених у користувача (потребує notice_id оголошення в query) (приклад // url/user/favorite?notice_id=6372bb9b6b1a551c201218ef)
+POST /user/favorite - додає оголошення до улюблених (потребує notice_id оголошення в query)
+
+
+```
 
 - if you need pagination News, you have to add two parameters (page={Number}&limit={Number}) (number of page wich could be choosen with amount=limit
   contacts on each pages), limit=Number [by default (GET news/?page=1&limit=10)]
