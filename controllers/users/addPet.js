@@ -9,20 +9,18 @@ const imgSizePx = 250;
 const addPet = async (req, res) => {
   const { _id } = req.user;
   const newId = new ObjectId(_id);
-  const avatar = null;
-  if (req.files.avatar) {
-    const { filepath: tempUpload, originalFilename } = req.files.avatar;
-    const jimpAvatar = await Jimp.read(tempUpload);
-    await jimpAvatar.resize(imgSizePx, imgSizePx, Jimp.RESIZE_BEZIER).writeAsync(tempUpload);
 
-    const extention = originalFilename.split(".").pop();
+  const { filepath: tempUpload, originalFilename } = req.files.avatar;
+  const jimpAvatar = await Jimp.read(tempUpload);
+  await jimpAvatar.resize(imgSizePx, imgSizePx, Jimp.RESIZE_BEZIER).writeAsync(tempUpload);
 
-    const filename = `${_id}.${extention}`;
-    const resultUpload = path.join(avatarDir, filename);
+  const extention = originalFilename.split(".").pop();
 
-    await fs.rename(tempUpload, resultUpload);
-    avatar = path.join("pets", filename);
-  }
+  const filename = `${_id}.${extention}`;
+  const resultUpload = path.join(avatarDir, filename);
+
+  await fs.rename(tempUpload, resultUpload);
+  avatar = path.join("pets", filename);
 
   const newPat = await Pet.create({ ...req.body, avatar, owner: newId });
 
