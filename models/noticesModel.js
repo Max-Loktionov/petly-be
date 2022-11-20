@@ -13,6 +13,7 @@ const newsSchema = Schema(
     },
     birthday: {
       type: String,
+      default: "00.00.00",
       required: true,
     },
     breed: {
@@ -54,18 +55,18 @@ const newsSchema = Schema(
 const Notice = model("notice", newsSchema);
 
 const noticeSchemaValidation = Joi.object({
-  name: Joi.string().lowercase().required().min(2).max(16),
-  title: Joi.string().lowercase().required().min(2).max(48),
-  birthday: Joi.date().required().iso().min(2).max(24),
-  breed: Joi.string().lowercase().required(),
+  name: Joi.string().required().min(2).max(16),
+  title: Joi.string().required().min(2).max(48),
+  birthday: Joi.string(),
+  breed: Joi.string().required(),
   male: Joi.string()
     .lowercase()
     .pattern(/^[female]+$/)
     .required(),
-  location: Joi.string().lowercase().required(),
+  location: Joi.string().required(),
   price: Joi.number(),
   category: Joi.string().valid("sell", "lost_found", "in_good_hands"),
-  comments: Joi.string().lowercase().required().min(8).max(120),
+  comments: Joi.string().required().min(8).max(120),
 });
 
 module.exports = { Notice, noticeSchemaValidation };
