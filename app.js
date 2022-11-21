@@ -9,10 +9,11 @@ const newsRouter = require("./routes/news");
 const friendsRouter = require("./routes/friends");
 const authRouter = require("./routes/auth");
 const noticesRoute = require("./routes/noticesRoute");
-const formidableMw = require("./middleware/formidableMw"); // ==================formidable
+// const formidableMw = require("./middleware/formidableMw"); // ==================formidable
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
+const FILE_LIMIT_SIZE = "9mb";
 
 app.use(logger(formatsLogger));
 app.use(cors());
@@ -20,8 +21,8 @@ app.use(cors());
 app.use(express.static("public"));
 // app.use(formidableMw); //==========================formidable
 
-app.use(bodyParser.json({ type: "application/*+json" }));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: FILE_LIMIT_SIZE, type: "application/*+json" }));
+app.use(bodyParser.urlencoded({ limit: FILE_LIMIT_SIZE, extended: false }));
 // parse application/json
 // app.use(bodyParser.json());
 
