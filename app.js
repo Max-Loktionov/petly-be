@@ -9,7 +9,7 @@ const newsRouter = require("./routes/news");
 const friendsRouter = require("./routes/friends");
 const authRouter = require("./routes/auth");
 const noticesRoute = require("./routes/noticesRoute");
-const formidableMw = require("./middleware/formidableMw"); // ==================formidable
+// const formidableMw = require("./middleware/formidableMw"); // ==================formidable
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
