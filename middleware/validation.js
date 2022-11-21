@@ -1,7 +1,6 @@
 const createError = require("http-errors");
 
 const validation = schema => {
-  console.log("validation ");
   return (req, res, next) => {
     const { error } = schema.validate(req.body);
     if (error) {

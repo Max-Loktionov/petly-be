@@ -9,22 +9,17 @@ const newsRouter = require("./routes/news");
 const friendsRouter = require("./routes/friends");
 const authRouter = require("./routes/auth");
 const noticesRoute = require("./routes/noticesRoute");
-// const formidableMw = require("./middleware/formidableMw"); // ==================formidable
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
-const FILE_LIMIT_SIZE = "9mb";
+const FILE_LIMIT_SIZE = 9000000;
 
 app.use(logger(formatsLogger));
 app.use(cors());
-// app.use(express.json());
 app.use(express.static("public"));
-// app.use(formidableMw); //==========================formidable
 
 app.use(bodyParser.json({ limit: FILE_LIMIT_SIZE, type: "application/*+json" }));
 app.use(bodyParser.urlencoded({ limit: FILE_LIMIT_SIZE, extended: false }));
-// parse application/json
-// app.use(bodyParser.json());
 
 app.use("/news", newsRouter);
 app.use("/friends", friendsRouter);
