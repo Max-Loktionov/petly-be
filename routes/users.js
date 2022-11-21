@@ -16,7 +16,8 @@ router.get("/favorite", authenticate, asyncWrapper(ctrl.getFavoriteNotice));
 router.delete("/favorite", authenticate, asyncWrapper(ctrl.removeFavoriteNotice));
 router.post("/favorite", authenticate, asyncWrapper(ctrl.addFavorite));
 
-router.post("/pets", authenticate, validation(schemasPet.addPetSchema), asyncWrapper(ctrl.addPet));
+router.post("/pets", authenticate, upload.single("avatar"), validation(schemasPet.addPetSchema), ctrl.addPet); //====== asyncWrapper(ctrl.addPet)
+
 router.delete("/pets/:petsId", authenticate, isValidId, asyncWrapper(ctrl.removePetById));
 router.patch("/avatar", authenticate, asyncWrapper(ctrl.updateUserAvatar));
 router.patch("/:properties", authenticate, asyncWrapper(ctrl.updateUser));

@@ -9,6 +9,8 @@ const imgSizePx = 250;
 const addPet = async (req, res) => {
   const { _id } = req.user;
   const newId = new ObjectId(_id);
+  //==============
+  console.log("addPet12 req:", req);
 
   const { filepath: tempUpload, originalFilename } = req.files.avatar;
   const jimpAvatar = await Jimp.read(tempUpload);
