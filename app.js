@@ -18,7 +18,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.static("public"));
 
-app.use(bodyParser.json({ limit: FILE_LIMIT_SIZE, type: "application/*+json" }));
+app.use(bodyParser.json({ limit: FILE_LIMIT_SIZE, parameterLimit: FILE_LIMIT_SIZE, type: "application/*+json" }));
 app.use(bodyParser.urlencoded({ limit: FILE_LIMIT_SIZE, extended: false }));
 
 app.use("/news", newsRouter);
