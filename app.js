@@ -16,6 +16,7 @@ const FILE_LIMIT_SIZE = 9000000;
 
 app.use(logger(formatsLogger));
 app.use(cors());
+app.use(express.json());
 app.use(express.static("public"));
 
 app.use(bodyParser.json({ limit: FILE_LIMIT_SIZE, parameterLimit: FILE_LIMIT_SIZE, type: "application/*+json" }));
