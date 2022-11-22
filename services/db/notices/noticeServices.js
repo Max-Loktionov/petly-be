@@ -4,7 +4,7 @@ const getNoticesService = async (skip, limit) => await Notice.find({}, {}, { ski
 
 const getNoticesByCathegoryService = async (category, skip, limit) => await Notice.find({ category }, {}, { skip, limit });
 
-const getNoticeByIdService = async id => await Notice.findById(id);
+const getNoticeByIdService = async id => await Notice.findById(id).populate({ path: "owner", select: ["email", "name"] });
 
 const deleteNoticeByIdService = async (notieceId, owner) => {
   const remove = await Notice.findOneAndDelete({ _id: notieceId, owner }, {});
