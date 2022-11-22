@@ -53,9 +53,9 @@ GET  /news -     get - всі дані з новинами /доступна п�
 
 /====== Робота з оголошеннями=======/
 
-GET /notices - всі оголошення / доступна пагінація (default (page = 1, per_page = 15))/ (обрати за категорією з доступних: ["sell", "lost_found", "in_good_hands"], за допомогою params)
+GET /notices - всі оголошення / доступна пагінація (default (page = 1, per_page = 15))/ (обрати за категорією з доступних: ["sell", "lost_found", "in_good_hands"], за допомогою req.query (params at the postman SET))
 GET /notices/:id  - детальна інформація по оголошенню(потребує id оголошення)
-POST /notices/:category  -  додавання оголошення (потребує name,title,birthday,breed,male,location,comments - обов'язково, price, avatar, category ), потребує передачу даних за допомогою body/form-data/text (key=name,key=title, ...) body/form-data/file key=avatar
+POST /notices  -  додавання оголошення (потребує name,title,birthday,breed,male,location,comments - обов'язково, price, avatar, category ), потребує передачу даних за допомогою body/form-data/text (key=name,key=title, ...); body/form-data/file key=avatar; query (notices?category=in_good_hands)
 DELETE /notices/:id - видалення оголошення за його id
 
 /======== Робота з favorite оголошеннями =======|

@@ -16,7 +16,7 @@ const addNoticeService = async newData => {
   const newNotice = new Notice({ ...newData });
   const savedNotice = await newNotice.save();
   await User.updateOne({ _id: savedNotice.owner }, { $push: { notieceId: savedNotice._id } });
-  console.log(savedNotice);
+
   return savedNotice;
 };
 
