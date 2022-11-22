@@ -11,13 +11,13 @@ const imgSizePx = 250;
 const updateUserAvatar = async (req, res) => {
   try {
     const { _id } = req.user;
-    const { filepath: tempUpload, originalFilename } = req.files.avatar;
+
+    const { path: tempUpload, originalname } = req.file;
 
     const jimpAvatar = await Jimp.read(tempUpload);
     await jimpAvatar.resize(imgSizePx, imgSizePx, Jimp.RESIZE_BEZIER).writeAsync(tempUpload);
 
-    const extention = originalFilename.split(".").pop();
-
+    const extention = originalname.split(".").pop();
     const filename = `${_id}.${extention}`;
     const resultUpload = path.join(avatarDir, filename);
 
