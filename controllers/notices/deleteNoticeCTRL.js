@@ -12,7 +12,7 @@ const deleteNoticeCTRL = async (req, res) => {
   const data = await deleteNoticeByIdService(notieceId, owner);
 
   if (!data) {
-    return res.status(404).json({ message: "notice with such id not found" });
+    return res.status(404).json({ message: "User's notice with such id not found" });
   }
 
   return res.status(200).json({ message: "successful" });

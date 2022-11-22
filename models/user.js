@@ -76,10 +76,7 @@ const registerJoiSchema = Joi.object({
   }),
   name: Joi.string(),
   city: Joi.string(),
-  phone: Joi.string().trim().regex(phoneRegex).messages({
-    "string.empty": `phone must contain value`,
-    "string.pattern.base": `phone must be +380xxxxxxxxx `,
-  }),
+  phone: Joi.string(),
   birthday: Joi.string(),
   token: Joi.string(),
 });
