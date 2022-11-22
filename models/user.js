@@ -46,7 +46,7 @@ const userSchema = new Schema(
     },
 
     notieceId: {
-      type: Schema.Types.Mixed,
+      type: [{ type: Schema.Types.ObjectId }],
       default: null,
     },
 

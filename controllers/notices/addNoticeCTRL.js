@@ -33,7 +33,7 @@ const addNoticeCTRL = async (req, res) => {
   }
 
   const availableCategory = CATHEGORY[isEnableCategory];
-  const newData = { ...data, category: availableCategory, owner: newId };
+  const newData = { ...data, avatar, category: availableCategory, owner: newId };
   const newNotice = await addNoticeService(newData);
 
   return res.status(201).json({ newNotice });
