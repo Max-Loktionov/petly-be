@@ -1,11 +1,30 @@
 const { addNoticeService, addNotieceId } = require("../../services/db/notices/noticeServices");
+const Jimp = require("jimp");
+const fs = require("fs/promises");
+const path = require("path");
+const { ObjectId } = require("mongodb");
+const avatarDir = path.join(__dirname, "../../", "public", "notices");
+const imgSizePx = 250;
 
 const CATHEGORY = ["sell", "lost_found", "in_good_hands"];
 
 const addNoticeCTRL = async (req, res) => {
   const data = req.body;
-  const { category } = req.params;
+  const { category } = req.query;
   const { _id } = req.user;
+  const newId = new ObjectId(_id);
+
+  const { path: tempUpload, filename, size } = req.file;
+  const jimpAvatar = await Jimp.read(tempUpload);
+  await jimpAvatar.resize(imgSizePx, imgSizePx, Jimp.RESIZE_BEZIER).writeAsync(tempUpload);
+
+  const extention = filename.split(".").pop();
+
+  const avatarName = `${_id}_${size}.${extention}`;
+  const resultUpload = path.join(avatarDir, avatarName);
+
+  await fs.rename(tempUpload, resultUpload);
+  avatar = path.join("notices", avatarName);
 
   const isEnableCategory = CATHEGORY.indexOf(category);
 
@@ -14,7 +33,7 @@ const addNoticeCTRL = async (req, res) => {
   }
 
   const availableCategory = CATHEGORY[isEnableCategory];
-  const newData = { ...data, category: availableCategory, owner: _id };
+  const newData = { ...data, category: availableCategory, owner: newId };
   const newNotice = await addNoticeService(newData);
 
   return res.status(201).json({ newNotice });
