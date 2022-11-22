@@ -19,7 +19,7 @@ router.post("/favorite", authenticate, asyncWrapper(ctrl.addFavorite));
 router.post("/pets", authenticate, upload.single("avatar"), validation(schemasPet.addPetSchema), asyncWrapper(ctrl.addPet));
 
 router.delete("/pets/:petsId", authenticate, isValidId, asyncWrapper(ctrl.removePetById));
-router.patch("/avatar", authenticate, asyncWrapper(ctrl.updateUserAvatar));
+router.patch("/avatar", authenticate, upload.single("avatar"), asyncWrapper(ctrl.updateUserAvatar));
 router.patch("/:properties", authenticate, asyncWrapper(ctrl.updateUser));
 
 module.exports = router;
