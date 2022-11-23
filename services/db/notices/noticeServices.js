@@ -6,6 +6,8 @@ const getNoticesByCathegoryService = async (category, skip, limit) => await Noti
 
 const getNoticeByIdService = async id => await Notice.findById(id).populate({ path: "owner", select: ["email", "name"] });
 
+const getNoticesByFilerService = async (filter, skip, limit) => await Notice.find({ title: filter }, {}, { skip, limit });
+
 const deleteNoticeByIdService = async (notieceId, owner) => {
   const remove = await Notice.findOneAndDelete({ _id: notieceId, owner }, {});
   await User.updateOne({ _id: owner }, { $pull: { notieceId: notieceId } });
@@ -29,4 +31,5 @@ module.exports = {
   getNoticeByIdService,
   deleteNoticeByIdService,
   getNoticesByCathegoryService,
+  getNoticesByFilerService,
 };
