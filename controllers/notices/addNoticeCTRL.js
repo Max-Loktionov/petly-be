@@ -3,7 +3,7 @@ const Jimp = require("jimp");
 const fs = require("fs/promises");
 const path = require("path");
 const { ObjectId } = require("mongodb");
-const avatarDir = path.join(__dirname, "../../", "public", "notices");
+const avatarDir = path.join(__dirname, "../../", "public", "notice_photo");
 const imgSizePx = 250;
 
 const CATHEGORY = ["sell", "lost_found", "in_good_hands"];
@@ -25,7 +25,7 @@ const addNoticeCTRL = async (req, res) => {
   const resultUpload = path.join(avatarDir, avatarName);
 
   await fs.rename(tempUpload, resultUpload);
-  avatar = path.join("notices", avatarName);
+  avatar = path.join("notice_photo", avatarName);
 
   const isEnableCategory = CATHEGORY.indexOf(category);
 
