@@ -47,9 +47,8 @@ const newsSchema = Schema(
       ref: "user",
       required: true,
     },
-    default: false,
   },
-  { versionKey: false }
+  { versionKey: false, timestamps: true }
 );
 
 const Notice = model("notice", newsSchema);
@@ -67,6 +66,7 @@ const noticeSchemaValidation = Joi.object({
   price: Joi.number(),
   category: Joi.string().valid("sell", "lost_found", "in_good_hands"),
   comments: Joi.string().required().min(8).max(120),
+  avatar: Joi.string(),
 });
 
 module.exports = { Notice, noticeSchemaValidation };
