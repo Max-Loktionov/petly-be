@@ -31,7 +31,7 @@ const userSchema = new Schema(
     },
     birthday: {
       type: String,
-      default: "00.00.00",
+      default: "01.01.1900",
     },
     city: {
       type: String,
