@@ -1,12 +1,31 @@
 const { Notice } = require("../../../models/noticesModel");
 const { User } = require("../../../models/user");
-const getNoticesService = async (skip, limit) => await Notice.find({}, {}, { skip, limit });
 
-const getNoticesByCathegoryService = async (category, skip, limit) => await Notice.find({ category }, {}, { skip, limit });
+const getNoticesService = async (skip, limit, rest) => {
+  const { category, filter = "" } = rest;
+  // const notice = await Notice.find({ $and: [{ category }, { name }] }, {}, { skip, limit });
+
+  if (!filter) {
+    const notice = await Notice.find({ category }, {}, { skip, limit });
+    return notice;
+  }
+
+  const notice = await Notice.find(
+    {
+      $and: [
+        { category },
+        {
+          $or: [{ name: filter }, { title: filter }, { breed: filter }],
+        },
+      ],
+    },
+    {},
+    { skip, limit }
+  );
+  return notice;
+};
 
 const getNoticeByIdService = async id => await Notice.findById(id).populate({ path: "owner", select: ["email", "name"] });
-
-const getNoticesByFilerService = async (filter, skip, limit) => await Notice.find({ title: filter }, {}, { skip, limit });
 
 const deleteNoticeByIdService = async (notieceId, owner) => {
   const remove = await Notice.findOneAndDelete({ _id: notieceId, owner }, {});
@@ -30,6 +49,4 @@ module.exports = {
   addNotieceId,
   getNoticeByIdService,
   deleteNoticeByIdService,
-  getNoticesByCathegoryService,
-  getNoticesByFilerService,
 };
