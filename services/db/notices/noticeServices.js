@@ -15,7 +15,7 @@ const getNoticesService = async (skip, limit, rest) => {
       $and: [
         { category },
         {
-          $or: [{ name: filter }, { title: filter }, { breed: filter }],
+          $or: [{ name: { $regex: filter } }, { title: { $regex: filter } }, { breed: { $regex: filter } }],
         },
       ],
     },
