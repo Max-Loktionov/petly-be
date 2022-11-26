@@ -5,8 +5,17 @@ const Jimp = require("jimp");
 
 const { User } = require("../../models/user");
 
+const { CLOUD_NAME, CLOUD_KEY, CLOUD_SECRET } = process.env;
+
 const avatarDir = path.join(__dirname, "../../", "public", "avatars");
 const imgSizePx = 250;
+
+cloudinary.config({
+  cloud_name: CLOUD_NAME,
+  api_key: CLOUD_KEY,
+  api_secret: CLOUD_SECRET,
+  secure: true,
+});
 
 const updateUserAvatar = async (req, res) => {
   try {
