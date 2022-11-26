@@ -6,7 +6,7 @@ const getUserNotice = async (req, res) => {
 
   const user = await User.findOne({ _id }).select("notieceId");
   const noticeId = user.notieceId;
-  const userNotice = await Notice.find({ _id: noticeId }, "-createdAt -updatedAt -owner");
+  const userNotice = await Notice.find({ _id: noticeId }, " -owner").sort({ createdAt: 1 });
 
   res.status(200).json({
     message: "success",

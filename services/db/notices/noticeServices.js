@@ -6,22 +6,26 @@ const getNoticesService = async (skip, limit, rest) => {
   // const notice = await Notice.find({ $and: [{ category }, { name }] }, {}, { skip, limit });
 
   if (!filter) {
-    const notice = await Notice.find({ category }, {}, { skip, limit });
+    const notice = await Notice.find({ category }, {}, { skip, limit }).sort({ createdAt: 1 });
     return notice;
   }
 
   const notice = await Notice.find(
     {
       $and: [
-        { category },
+        { categorycategory: category.toLowerCase() },
         {
-          $or: [{ name: { $regex: filter } }, { title: { $regex: filter } }, { breed: { $regex: filter } }],
+          $or: [
+            { name: { $regex: filter, $options: "i" } },
+            { title: { $regex: filter, $options: "i" } },
+            { breed: { $regex: filter, $options: "i" } },
+          ],
         },
       ],
     },
     {},
     { skip, limit }
-  );
+  ).sort({ createdAt: 1 });
   return notice;
 };
 
