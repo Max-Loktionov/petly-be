@@ -35,12 +35,11 @@ const userSchema = new Schema(
     },
     city: {
       type: String,
-      default: "",
+      default: "No city",
     },
     phone: {
       type: String,
-
-      default: "",
+      default: "No phone",
     },
 
     notieceId: {
