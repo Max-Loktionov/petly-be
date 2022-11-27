@@ -29,7 +29,6 @@ const newsSchema = Schema(
     },
     price: {
       type: Number,
-      required: true,
     },
     comments: {
       type: String,
@@ -63,7 +62,7 @@ const noticeSchemaValidation = Joi.object({
     .pattern(/^[female]+$/)
     .required(),
   location: Joi.string().empty(""),
-  price: Joi.number(),
+  price: Joi.number().empty(""),
   category: Joi.string().valid("sell", "lost_found", "in_good_hands"),
   comments: Joi.string().required().min(8).max(120),
   avatar: Joi.string().empty(""),

@@ -3,10 +3,34 @@ const { User } = require("../../models/user");
 
 const getFavoriteNotice = async (req, res) => {
   const { _id } = req.user;
+  const { page = 1, per_page = 15, filter = "" } = req.query;
+
+  const skip = (+page - 1) * +per_page;
 
   const user = await User.findOne({ _id }).select("favoriteNoticeId");
   const favoriteNoticeId = user.favoriteNoticeId;
-  const userfavoriteNoticeId = await Notice.find({ _id: favoriteNoticeId }, " -owner").sort({ createdAt: -1 });
+
+  if (!filter) {
+    const userfavoriteNoticeId = await Notice.find({ _id: favoriteNoticeId }, " -owner", { skip, limit }).sort({ createdAt: -1 });
+    return userfavoriteNoticeId;
+  }
+
+  const userfavoriteNoticeId = await Notice.find(
+    {
+      $and: [
+        { _id: favoriteNoticeId },
+        {
+          $or: [
+            { name: { $regex: filter, $options: "i" } },
+            { title: { $regex: filter, $options: "i" } },
+            { breed: { $regex: filter, $options: "i" } },
+          ],
+        },
+      ],
+    },
+    " -owner",
+    { skip, limit }
+  ).sort({ createdAt: -1 });
 
   res.status(200).json({
     message: "success",

@@ -25,7 +25,7 @@ const getNoticesService = async (skip, limit, rest) => {
     },
     {},
     { skip, limit }
-  ).sort({ createdAt: 1 });
+  ).sort({ createdAt: -1 });
   return notice;
 };
 
