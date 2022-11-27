@@ -12,7 +12,10 @@ const getFavoriteNotice = async (req, res) => {
 
   if (!filter) {
     const userfavoriteNoticeId = await Notice.find({ _id: favoriteNoticeId }, " -owner", { skip, limit }).sort({ createdAt: -1 });
-    return userfavoriteNoticeId;
+    res.status(200).json({
+      message: "success",
+      data: { result: userfavoriteNoticeId },
+    });
   }
 
   const userfavoriteNoticeId = await Notice.find(
@@ -31,7 +34,7 @@ const getFavoriteNotice = async (req, res) => {
     " -owner",
     { skip, limit }
   ).sort({ createdAt: -1 });
-
+  console.log("getFavoriteN ", userfavoriteNoticeId);
   res.status(200).json({
     message: "success",
     data: { result: userfavoriteNoticeId },
