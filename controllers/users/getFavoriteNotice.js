@@ -3,9 +3,9 @@ const { User } = require("../../models/user");
 
 const getFavoriteNotice = async (req, res) => {
   const { _id } = req.user;
-  const { page = 1, per_page = 15, filter = "" } = req.query;
+  const { page = 1, limit = 15, filter = "" } = req.query;
 
-  const skip = (+page - 1) * +per_page;
+  const skip = (+page - 1) * +limit;
 
   const user = await User.findOne({ _id }).select("favoriteNoticeId");
   const favoriteNoticeId = user.favoriteNoticeId;
