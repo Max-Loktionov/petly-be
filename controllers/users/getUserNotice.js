@@ -24,7 +24,7 @@ const getUserNotice = async (req, res) => {
   const userNotice = await Notice.find(
     {
       $and: [
-        { _id: favoriteNoticeId },
+        { _id: noticeId },
         {
           $or: [
             { name: { $regex: filter, $options: "i" } },
