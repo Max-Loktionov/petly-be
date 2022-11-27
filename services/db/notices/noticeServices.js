@@ -6,7 +6,7 @@ const getNoticesService = async (skip, limit, rest) => {
   // const notice = await Notice.find({ $and: [{ category }, { name }] }, {}, { skip, limit });
 
   if (!filter) {
-    const notice = await Notice.find({ category }, {}, { skip, limit }).sort({ createdAt: 1 });
+    const notice = await Notice.find({ category }, {}, { skip, limit }).sort({ createdAt: -1 });
     return notice;
   }
 
@@ -29,7 +29,7 @@ const getNoticesService = async (skip, limit, rest) => {
   return notice;
 };
 
-const getNoticeByIdService = async id => await Notice.findById(id).populate({ path: "owner", select: ["email", "name"] });
+const getNoticeByIdService = async id => await Notice.findById(id).populate({ path: "owner", select: ["email", "phone", "name"] });
 
 const deleteNoticeByIdService = async (notieceId, owner) => {
   const remove = await Notice.findOneAndDelete({ _id: notieceId, owner }, {});

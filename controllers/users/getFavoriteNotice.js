@@ -6,7 +6,7 @@ const getFavoriteNotice = async (req, res) => {
 
   const user = await User.findOne({ _id }).select("favoriteNoticeId");
   const favoriteNoticeId = user.favoriteNoticeId;
-  const userfavoriteNoticeId = await Notice.find({ _id: favoriteNoticeId }, " -owner").sort({ createdAt: 1 });
+  const userfavoriteNoticeId = await Notice.find({ _id: favoriteNoticeId }, " -owner").sort({ createdAt: -1 });
 
   res.status(200).json({
     message: "success",
