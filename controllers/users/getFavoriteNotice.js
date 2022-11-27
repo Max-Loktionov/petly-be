@@ -34,7 +34,7 @@ const getFavoriteNotice = async (req, res) => {
     " -owner",
     { skip, limit }
   ).sort({ createdAt: -1 });
-  console.log("getFavoriteN ", userfavoriteNoticeId);
+
   res.status(200).json({
     message: "success",
     data: { result: userfavoriteNoticeId },
