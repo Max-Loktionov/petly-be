@@ -1,13 +1,9 @@
-databases:
-  - name: mongodb.net/petly-project
-    plan: free
-
 services:
   - type: web
     name: group-project-petly-be
     env: node
     plan: free
-    repo: https://github.com/Max-Loktionov/nodejs-homework-rest-api
+    repo: https://github.com/Max-Loktionov/petly-be
     branch: main
     buildCommand: yarn install && yarn build
     startCommand: yarn start
