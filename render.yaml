@@ -5,7 +5,7 @@ services:
     plan: free
     repo: https://github.com/Max-Loktionov/petly-be
     branch: main
-    buildCommand: yarn install && yarn build
+    buildCommand: yarn install
     startCommand: yarn start
     envVars:
       - key: NODE_ENV
