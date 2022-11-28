@@ -7,7 +7,7 @@ services:
     name: group-project-petly-be
     env: node
     plan: free
-     repo: https://github.com/Max-Loktionov/nodejs-homework-rest-api
+    repo: https://github.com/Max-Loktionov/nodejs-homework-rest-api
     branch: main
     buildCommand: yarn install && yarn build
     startCommand: yarn start
@@ -18,5 +18,3 @@ services:
         fromDatabase:
           name: mongodb.net/petly-project
           property: connectionString
-      - key: SESSION_SECRET_KEY
-        generateValue: true
