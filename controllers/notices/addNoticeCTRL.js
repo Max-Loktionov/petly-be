@@ -18,7 +18,7 @@ const addNoticeCTRL = async (req, res) => {
 
   const jimpAvatar = await Jimp.read(tempUpload);
   await jimpAvatar.resize(imgSizePx, imgSizePx, Jimp.RESIZE_BEZIER).writeAsync(tempUpload);
-
+  console.log("========addNoticeCTRL req.file:", req.file);
   const extention = filename.split(".").pop();
 
   const avatarName = `${_id}_${size}.${extention}`;
