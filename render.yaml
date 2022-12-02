@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: group-project-petly-be
+    env: node
+    plan: free
+    repo: https://github.com/Max-Loktionov/petly-be
+    branch: main
+    buildCommand: yarn install
+    startCommand: yarn start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_HOST
+        fromDatabase:
+          name: mongodb.net/petly-project
+          property: connectionString

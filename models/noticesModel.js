@@ -5,7 +5,7 @@ const newsSchema = Schema(
   {
     name: {
       type: String,
-      required: true,
+      default: "New Notice",
     },
     title: {
       type: String,
@@ -13,12 +13,11 @@ const newsSchema = Schema(
     },
     birthday: {
       type: String,
-      default: "00.00.00",
-      required: true,
+      default: "01.01.1900",
     },
     breed: {
       type: String,
-      required: true,
+      default: "No Breed",
     },
     male: {
       type: String,
@@ -26,7 +25,7 @@ const newsSchema = Schema(
     },
     location: {
       type: String,
-      required: true,
+      default: "Any",
     },
     price: {
       type: Number,
@@ -54,19 +53,19 @@ const newsSchema = Schema(
 const Notice = model("notice", newsSchema);
 
 const noticeSchemaValidation = Joi.object({
-  name: Joi.string().required().min(2).max(16),
+  name: Joi.string().min(2).max(16).empty(""),
   title: Joi.string().required().min(2).max(48),
-  birthday: Joi.string(),
-  breed: Joi.string().required(),
+  birthday: Joi.string().empty(""),
+  breed: Joi.string().empty(""),
   male: Joi.string()
     .lowercase()
     .pattern(/^[female]+$/)
     .required(),
-  location: Joi.string().required(),
-  price: Joi.number(),
+  location: Joi.string().empty(""),
+  price: Joi.number().empty(""),
   category: Joi.string().valid("sell", "lost_found", "in_good_hands"),
   comments: Joi.string().required().min(8).max(120),
-  avatar: Joi.string(),
+  avatar: Joi.string().empty(""),
 });
 
 module.exports = { Notice, noticeSchemaValidation };
