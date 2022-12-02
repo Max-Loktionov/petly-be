@@ -6,7 +6,9 @@ const getNoticesService = async (skip, limit, rest) => {
   // const notice = await Notice.find({ $and: [{ category }, { name }] }, {}, { skip, limit });
 
   if (!filter) {
+
     const notice = await Notice.find({ category }, {}, { skip, limit }).sort({ createdAt: -1 });
+
     return notice;
   }
 
@@ -25,7 +27,9 @@ const getNoticesService = async (skip, limit, rest) => {
     },
     {},
     { skip, limit }
+
   ).sort({ createdAt: -1 });
+
   return notice;
 };
 
