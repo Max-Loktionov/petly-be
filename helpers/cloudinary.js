@@ -12,6 +12,11 @@ cloudinary.config({
 exports.uploads = (file, folder) => {
   console.log("====cloudinary file", file);
   console.log("=====cloudinary folder:", folder);
+  cloudinary.image(file, {
+    secure: true,
+    transformation: [{ width: 350, height: 350, gravity: "face", crop: "thumb" }, { radius: 20 }],
+  });
+
   return new Promise(resolve => {
     cloudinary.uploader.upload(
       file,

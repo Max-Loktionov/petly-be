@@ -1,9 +1,11 @@
 const { addNoticeService, addNotieceId } = require("../../services/db/notices/noticeServices");
 const Jimp = require("jimp");
 const fs = require("fs/promises");
-const path = require("path");
+const createError = require("http-errors");
+const cloudinary = require("../../helpers/cloudinary");
+
 const { ObjectId } = require("mongodb");
-const avatarDir = path.join(__dirname, "../../", "public", "notice_photo");
+
 const imgSizePx = 250;
 
 const CATHEGORY = ["sell", "lost_found", "in_good_hands"];
@@ -14,30 +16,29 @@ const addNoticeCTRL = async (req, res) => {
   const { _id } = req.user;
   const newId = new ObjectId(_id);
 
-  const { path: tempUpload, filename, size } = req.file;
+  const { path: tempUpload } = req.file;
 
   const jimpAvatar = await Jimp.read(tempUpload);
   await jimpAvatar.resize(imgSizePx, imgSizePx, Jimp.RESIZE_BEZIER).writeAsync(tempUpload);
-  console.log("========addNoticeCTRL req.file:", req.file);
-  const extention = filename.split(".").pop();
 
-  const avatarName = `${_id}_${size}.${extention}`;
-  const resultUpload = path.join(avatarDir, avatarName);
+  try {
+    const uploader = async path => await cloudinary.uploads(path, "petly_dir/notice_avatar");
+    const newPath = await uploader(tempUpload);
+    fs.unlink(req.file.path);
 
-  await fs.rename(tempUpload, resultUpload);
-  avatar = path.join("notice_photo", avatarName);
+    const isEnableCategory = CATHEGORY.indexOf(category); //TODO  del this
+    if (isEnableCategory === -1) {
+      return res.status(400).json({ message: "Not available category" });
+    }
+    const availableCategory = CATHEGORY[isEnableCategory];
 
-  const isEnableCategory = CATHEGORY.indexOf(category);
+    const newData = { ...data, avatar: newPath.url, category: availableCategory, owner: newId };
+    const newNotice = await addNoticeService(newData);
 
-  if (isEnableCategory === -1) {
-    return res.status(400).json({ message: "Not available category" });
+    return res.status(201).json({ newNotice });
+  } catch (error) {
+    throw createError(400, error.message);
   }
-
-  const availableCategory = CATHEGORY[isEnableCategory];
-  const newData = { ...data, avatar, category: availableCategory, owner: newId };
-  const newNotice = await addNoticeService(newData);
-
-  return res.status(201).json({ newNotice });
 };
 
 module.exports = addNoticeCTRL;

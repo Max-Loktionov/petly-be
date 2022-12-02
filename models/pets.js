@@ -10,7 +10,7 @@ const petSchema = new Schema(
     },
     birthday: {
       type: String,
-      default: "00.00.0000",
+      default: "01.01.1900",
     },
     breed: {
       type: String,
