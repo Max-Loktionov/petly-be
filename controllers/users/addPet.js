@@ -31,6 +31,7 @@ const addPet = async (req, res) => {
     });
   } catch (error) {
     // await fs.unlink(req.file.path);
+    console.log("====addPet error:", error);
     throw createError(400, error.message);
   }
 };
