@@ -32,7 +32,7 @@ const updateUserAvatar = async (req, res) => {
     res.json({ message: "success", avatar: newPath.url });
   } catch (error) {
     // await fs.unlink(req.file.path);
-
+    console.log("===updateUserAvatar error:", error);
     throw createError(400, error.message);
   }
 };
